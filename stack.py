@@ -10,9 +10,8 @@ def get_questions_link(question,article_number=False):
     a_questions = []
     for i in divs_questions:
         try:
-            div_answered = i.find("div",{'class':'status answered'})
-            if div_answered != None:
-                a_questions.append(i.find("a",{'class':'question-hyperlink'}))
+            a_questions.append(i.find("a",{'class':'question-hyperlink'}))
+            
         except: continue
     
     if str(article_number).isnumeric(): 
@@ -20,13 +19,13 @@ def get_questions_link(question,article_number=False):
             return a_questions[1-article_number]
         
         except: 
-            print(f'Não conseguimos achar nada relacionado à "{question}" no artigo "{article_number}"')
+            # print(f'Não conseguimos achar nada relacionado à "{question}" no artigo "{article_number}"')
             return False
     else: 
         try:
             return a_questions[0]
         except: 
-            print(f'Não conseguimos achar nada relacionado à "{question}"')
+            # print(f'Não conseguimos achar nada relacionado à "{question}"')
             return False
 
 def get_questions_text(url):

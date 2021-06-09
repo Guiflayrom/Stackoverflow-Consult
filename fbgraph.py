@@ -40,10 +40,12 @@ class PageController:
 
     def insert_comment(self,pub_id,message):
         payload = {'message':message}
-        return requests.post(self.__get_url_comment(pub_id),data=payload).json()
+        req = requests.post(self.__get_url_comment(pub_id),data=payload)
+        return req.json(),req.status_code
     
     def delete_comment(self,pub_id):
-        return requests.delete(self.__get_url_comment(pub_id)).json()
+        req = requests.delete(self.__get_url_comment(pub_id))
+        return req.json(),req.status_code
 
     
 
