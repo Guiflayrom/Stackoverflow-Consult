@@ -3,7 +3,7 @@ from fbgraph import FbConection, PageController
 from datetime import datetime
 from time import sleep
 
-access_token = "" #Your Acess Token
+access_token = "" #PAGE ACESS CODE
 conection = FbConection(access_token)
 stackao = PageController(conection)
 
@@ -21,7 +21,7 @@ except:
 comments = []
 
 article_number = None
-article_code = "#$%AR"
+article_code = "$AR:"
 while True:
     comments_json, stts = stackao.get_comment(id_pub['id'])
     if stts == 200:
