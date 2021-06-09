@@ -1,0 +1,14 @@
+beautifulsoup4==4.9.3
+bs4==0.0.1
+certifi==2021.5.30
+chardet==4.0.0
+DateTime==4.3
+facebook-sdk==3.1.0
+idna==2.10
+lxml==4.6.3
+pytz==2021.1
+requests==2.25.1
+soupsieve==2.2.1
+Unidecode==1.2.0
+urllib3==1.26.5
+zope.interface==5.4.0
