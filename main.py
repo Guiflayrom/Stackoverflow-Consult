@@ -3,19 +3,29 @@ from fbgraph import FbConection, PageController
 from datetime import datetime
 from time import sleep
 
-access_token = "" #PAGE ACESS CODE
+access_token = "EAAHsFBBRPdoBAIZBIEGmaXQJZBUhnXQkP83fZAx0a2H5W6RM7sIV4ymfOe8zNJjlwX6LK8wmfUg01BSn38c02za7Wu0WxIQoE88hESOJ6vuL6FX5zBXfoSphNBAsd5i5DDPxc1EqqMvZA35ZBGX54xH4YOyQfJMLobc01MZBTwPQukvx0bl80I" #PAGE ACESS CODE
 conection = FbConection(access_token)
 stackao = PageController(conection)
 
 today = datetime.today()
 text_pub = f"""
-post aberto para perguntas! ({today.day}/{today.month}/{today.year})
+POST ABERTO PARA CONSULTA! ({today.day}/{today.month}/{today.year})
+ 
+⚠️⚠️⚠️⚠️⚠️⚠️
+⚠️⚠️⚠️⚠️⚠️⚠️
 
-comente qual é a sua pergunta e o nosso robô irá te responder com base no stackoverflow :D
+VOCÊ PODE COMENTAR:
+
+º SUA DUVIDA 🤔
+º UM ERRO QUE ESTÁ DANDO NO SEU CÓDIGO🙄
+
+E IREMOS LHE RETORNAR O RESULTADO DE UMA CONSULTA NO STACKOVERFLOW 😃😃
 """.title()
 
+pic = open("images/hiw.jpg","rb")
+
 try:
-    id_pub = stackao.insert_pub_text(text_pub)
+    id_pub = stackao.insert_pub_pic(pic,text_pub)
 except:
     id_pub = stackao.insert_pub_text(text_pub + "1")
 comments = []
@@ -44,7 +54,19 @@ while True:
                     output_question = get_questions_text(topic['href'])
                     output_answer = get_answer(topic['href'])
                     
-                    text_answer = f'====================\n{output_question}\n====================\n{output_answer}\n===================='
+                    text_answer = f"""
+                    =============
+                    Pergunta ❔
+                    =============
+                    
+                    {output_question}
+                    
+                    =============
+                    Resposta ✅
+                    =============
+                    
+                    {output_answer}
+                    """
                     _,ret = stackao.insert_comment(id_comment,text_answer)
                     if ret != 200:
                         text_answer = "O artigo selecionado ultrapassa do limite de caracteres, tente novamente com outro."
