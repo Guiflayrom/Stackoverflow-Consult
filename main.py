@@ -4,7 +4,7 @@ from datetime import datetime
 from time import sleep
 import os
 
-access_token = "EAAHsFBBRPdoBAIZBIEGmaXQJZBUhnXQkP83fZAx0a2H5W6RM7sIV4ymfOe8zNJjlwX6LK8wmfUg01BSn38c02za7Wu0WxIQoE88hESOJ6vuL6FX5zBXfoSphNBAsd5i5DDPxc1EqqMvZA35ZBGX54xH4YOyQfJMLobc01MZBTwPQukvx0bl80I" #PAGE ACESS CODE
+access_token = "" #PAGE ACESS CODE
 conection = FbConection(access_token)
 stackao = PageController(conection)
 
