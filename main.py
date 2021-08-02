@@ -32,8 +32,18 @@ comments = []
 
 article_number = None
 article_code = "$AR:"
+error = True
 while True:
-    comments_json, stts = stackao.get_comment(id_pub['id'])
+    while True:
+        try:
+            comments_json, stts = stackao.get_comment(id_pub['id'])
+            if error: print("Conexão concluida com sucesso");error = False
+            break
+        except:
+            error = True
+            print("Erro de conexão, tentando novamente em 5 segundos...")   
+            sleep(5)
+        
     if stts == 200:
         for data in comments_json['data']: 
             if data not in comments: 

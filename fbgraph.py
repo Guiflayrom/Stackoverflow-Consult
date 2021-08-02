@@ -47,7 +47,6 @@ class PageController:
         req = requests.delete(self.__get_url_comment(pub_id))
         return req.json(),req.status_code
 
-    
-
-
-
+    def delete_pub(self,pub_id):
+        req = requests.delete(f"https://graph.facebook.com/v10.0/{pub_id}")
+        return req.status_code

@@ -1,9 +1,8 @@
 from bs4 import BeautifulSoup as bs
 import requests
-from unidecode import unidecode
 
 def get_questions_link(question,article_number=False):
-    url = 'https://pt.stackoverflow.com/search?q=' + unidecode(question)
+    url = 'https://pt.stackoverflow.com/search?q=' + question
     content = requests.get(url)
     cs = bs(content.text,features='lxml')
     divs_questions = cs.findAll("div",{'class':'question-summary search-result'})
