@@ -2,6 +2,7 @@ from stack import trat_code, get_questions_link,get_questions_text,get_answer
 from fbgraph import FbConection, PageController
 from datetime import datetime
 from time import sleep
+import os
 
 access_token = "EAAHsFBBRPdoBAIZBIEGmaXQJZBUhnXQkP83fZAx0a2H5W6RM7sIV4ymfOe8zNJjlwX6LK8wmfUg01BSn38c02za7Wu0WxIQoE88hESOJ6vuL6FX5zBXfoSphNBAsd5i5DDPxc1EqqMvZA35ZBGX54xH4YOyQfJMLobc01MZBTwPQukvx0bl80I" #PAGE ACESS CODE
 conection = FbConection(access_token)
@@ -27,13 +28,14 @@ pic = open("images/hiw.jpg","rb")
 try:
     id_pub = stackao.insert_pub_pic(pic,text_pub)
 except:
-    id_pub = stackao.insert_pub_text(text_pub + "1")
+    id_pub = stackao.insert_pub_text(text_pub + " - Sessão 2")
 comments = []
 
 article_number = None
 article_code = "$AR:"
 error = True
 while True:
+    os.system('cls' if os.name == 'nt' else 'clear')    
     while True:
         try:
             comments_json, stts = stackao.get_comment(id_pub['id'])
@@ -48,7 +50,7 @@ while True:
         for data in comments_json['data']: 
             if data not in comments: 
                 comments.append(data)
-                
+                print(f"Comentarios respondidos: {len(comments)}")
                 message_comment = data['message']
                 id_comment = data['id']
                 
